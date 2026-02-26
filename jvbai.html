@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>我的网盘导航-蓝粉版</title>
+<title>我的网盘导航-橙白版</title>
 <style>
 * {
   margin: 0;
@@ -14,14 +14,13 @@
 body {
   min-height: 100vh;
   padding: 20px;
-  background: linear-gradient(45deg, #74b6e4, #a8c0e0, #f5c5e1, #e4a7bd);
-  background-size: 400% 400%;
-  animation: bgMove 6s ease infinite;
+  background: linear-gradient(to bottom left, #ff9a6c, #ffb88a, #fff8f0, #ffe8cc);
+  background-size: 200% 200%;
+  animation: bgMove 4s ease-in-out infinite alternate;
 }
 @keyframes bgMove {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% { background-position: 100% 0%; }
+  100% { background-position: 0% 100%; }
 }
 .container {
   max-width: 800px;
@@ -59,17 +58,18 @@ body {
 .title {
   text-align: center;
   font-size: 26px;
-  color: #fff;
+  color: #333;
   margin-bottom: 30px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  text-shadow: 0 1px 2px rgba(255,154,108,0.2);
 }
 .item {
-  background: linear-gradient(90deg, rgba(255,255,255,0.85), rgba(255,255,255,0.7));
+  background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
   border-radius: 16px;
   padding: 24px;
   margin-bottom: 16px;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255,154,108,0.1);
 }
 .item a {
   font-size: 18px;
@@ -80,11 +80,11 @@ body {
 .item p {
   margin-top: 6px;
   font-size: 14px;
-  color: #444;
+  color: #555;
 }
 .item:active {
   transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(255,154,108,0.15);
 }
 /* 手机端适配 */
 @media (max-width: 400px) {
@@ -98,8 +98,8 @@ body {
 <body>
 <div class="container">
   <div class="version-select">
-    <button class="version-btn active" onclick="location.href='index.html'">蓝粉渐变</button>
-    <button class="version-btn" onclick="location.href='jvbai.html'">橙白渐变</button>
+    <button class="version-btn" onclick="location.href='index.html'">蓝粉渐变</button>
+    <button class="version-btn active" onclick="location.href='jvbai.html'">橙白渐变</button>
     <button class="version-btn" onclick="location.href='lvbai.html'">绿白渐变</button>
   </div>
   <h1 class="title">我的网盘导航</h1>
