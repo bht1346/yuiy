@@ -1,118 +1,118 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>我的网盘导航-绿白版</title>
-<style>
+>超文本标记语言！doctype >>
+超文本标记语言< 朗=>"zh-CN"
+>头<
+元< 字符集=>"UTF-8"
+元< 姓名="视口" 内容=>"宽度=设备宽度，初始比例=1.0"
+>标题<我的网盘导航-绿白版>标题</
+>风格<
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, sans-serif;
+页边距：0；
+填充：0；
+框大小：边框框；
+font-family:system-ui，sans-serif；
 }
-body {
-  min-height: 100vh;
-  padding: 20px;
-  background: linear-gradient(to bottom left, #66d9b8, #8ee4af, #f0fff8, #e6f9f3);
-  background-size: 200% 200%;
-  animation: bgMove 4s ease-in-out infinite alternate;
+正文{
+最低高度：100vh；
+填料：20px；
+背景：线性梯度(向左下方，#66d9b8，#8ee4af，#f0fff8，#e6f9f3)；
+背景尺寸：200%200%；
+动画：bg移动4s轻松进出无限交替；
 }
-@keyframes bgMove {
-  0% { background-position: 100% 0%; }
-  100% { background-position: 0% 100%; }
+@keyframes bgMove{
+0%{后台位置：100%0%；}
+100%{后台位置：0%100%；}
 }
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px 0;
+.container{
+最大宽度：800px；
+页边距：0自动；
+填充：20px0；
 }
 /* 版本切换栏 */
-.version-select {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
+.version-select{
+显示：柔性；
+对齐-内容：居中；
+间隙：12px；
+底边距：20px；
+柔性缠绕：缠绕；
 }
-.version-btn {
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: none;
-  background: rgba(255,255,255,0.8);
-  color: #333;
-  font-size: 14px;
-  cursor: pointer;
-  backdrop-filter: blur(4px);
-  transition: all 0.2s ease;
+.version-btn{
+填料：8px16px；
+边界半径：20px；
+边框：无；
+背景：rgba(255,255,255,0.8);
+颜色：#333；
+font-size:14px；
+光标：指针；
+背景滤镜：模糊(4 PX)；
+过渡：所有0.2s轻松；
 }
-.version-btn:hover {
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.version-btn：悬停{
+背景：#FFF；
+box-shadow:02px8px rgba(0,0,0,0.1);
 }
-.version-btn.active {
-  background: #fff;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+.version-btn.active{
+背景：#FFF；
+font-weight:600；
+box-shadow:02px8px rgba(0,0,0,0.15);
 }
-.title {
-  text-align: center;
-  font-size: 26px;
-  color: #333;
-  margin-bottom: 30px;
-  text-shadow: 0 1px 2px rgba(102,217,184,0.2);
+.title{
+文本对齐：居中；
+font-size:26px；
+颜色：#333；
+底边距：30px；
+文本阴影：01px2px rgba(102,217,184,0.2);
 }
-.item {
-  background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 16px;
-  backdrop-filter: blur(6px);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid rgba(102,217,184,0.1);
+.item{
+背景：线性梯度(90度 ，rgba(255,255,255,0.9), rgba(255,255,255,0.8));
+边界半径：16px；
+填充：24px；
+底边距：16px；
+背景滤镜：模糊(6 PX)；
+过渡：变换0.2s轻松，影片0.2s轻松；
+边框：1px实体rgba(102,217,184,0.1);
 }
-.item a {
-  font-size: 18px;
-  color: #222;
-  text-decoration: none;
-  display: block;
+.项目a{
+字体大小：18px；
+颜色：#222；
+文字修饰：无；
+显示：块；
 }
-.item p {
-  margin-top: 6px;
-  font-size: 14px;
-  color: #555;
+.项目p{
+margin-top:6px；
+font-size:14px；
+颜色：#555；
 }
-.item:active {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(102,217,184,0.15);
+.item：活动{
+变换：translateY(-6px)；
+box-shadow:08px20px rgba(102,217,184,0.15);
 }
 /* 手机端适配 */
-@media (max-width: 400px) {
-  .version-btn {
-    padding: 6px 12px;
-    font-size: 13px;
+@media(最大宽度：400px){
+.version-btn{
+填料：6px12px；
+font-size:13px；
   }
 }
-</style>
-</head>
-<body>
-<div class="container">
-  <div class="version-select">
-    <button class="version-btn" onclick="location.href='index.html'">蓝粉渐变</button>
-    <button class="version-btn" onclick="location.href='jvbai.html'">橙白渐变</button>
-    <button class="version-btn active" onclick="location.href='lvbai.html'">绿白渐变</button>
+</风格>
+</头>
+<身体>
+<div 班级="容器">
+  <div 班级="版本选择">
+    <按钮 班级="版本-btn" onClick="位置.href='index.html'">蓝粉渐变</按钮>
+    <按钮 班级="版本-btn" onClick="位置.href='jvbai.html'">橙白渐变</按钮>
+box-shadow:02px8px rgba(0,0,0,0.1);<按钮 班级="版本-btn活动" onClick="位置.href='lvbai.html'">绿白渐变</按钮>
   </div>
-  <h1 class="title">我的网盘导航</h1>
-  <div class="item"><a href="https://pan.baidu.com" target="_blank">百度网盘</a></div>
-  <div class="item"><a href="https://www.aliyundrive.com" target="_blank">阿里云盘</a></div>
-  <div class="item"><a href="/" target="_blank">私人云盘</a><p>服务器自建文件管理</p></div>
-  <div class="item"><a href="#" target="_blank">常用链接</a><p>快速入口集合</p></div>
-  <div class="item"><a href="https://www.123pan.com" target="_blank">123网盘</a></div>
-  <div class="item"><a href="https://www.feishu.cn" target="_blank">飞书文档</a></div>
-  <div class="item"><a href="https://www.baidu.com" target="_blank">百度搜索</a></div>
-  <div class="item"><a href="https://github.com" target="_blank">GitHub</a></div>
-  <div class="item"><a href="https://www.bilibili.com" target="_blank">哔哩哔哩</a></div>
-  <div class="item"><a href="#" target="_blank">其他合集</a><p>备用链接、工具集合</p></div>
+  <H1 班级="标题">我的网盘导航</H1>
+  <div 班级="项目"><一个 href="https://pan.baidu.com" 目标="_空白">百度网盘</一个></div>
+  <div 班级="项目"><一个 href="https://www.aliyundrive.com" 目标="_空白">阿里云盘</一个></div>
+  <div 班级="项目"><一个 href="/" 目标="_空白">私人云盘</一个><p>服务器自建文件管理</p></div>
+  <div 班级="项目"><一个 href="#" 目标="_空白">常用链接</一个><p>快速入口集合</p></div>
+  <div 班级="项目"><一个 href="https://www.123pan.com" 目标="_空白">123网盘</一个></div>
+  <div 班级="项目"><一个 href="https://www.feishu.cn" 目标="_空白">飞书文档</一个></div>
+  <div 班级="项目"><一个 href="https://www.baidu.com" 目标="_空白">百度搜索</一个></div>
+  <div 班级="项目"><一个 href="https://github.com" 目标="_空白">GitHub</一个></div>
+  <div 班级="项目"><一个 href="https://www.bilibili.com" 目标="_空白">哔哩哔哩</一个></div>
+  <div 班级="项目"><一个 href="17c.cn" 目标="_空白">其他合集</一个><p>备用链接、工具集合</p></div>
 </div>
-</body>
-</html>
+</身体>
+</超文本标记语言>
