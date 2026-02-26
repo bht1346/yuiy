@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>某些</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+body {
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(to bottom left, #ff9a6c, #ffb88a, #fff8f0, #ffe8cc);
+  background-size: 200% 200%;
+  animation: bgMove 4s ease-in-out infinite alternate;
+}
+@keyframes bgMove {
+  0% { background-position: 100% 0%; }
+  100% { background-position: 0% 100%; }
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+.title {
+  text-align: center;
+  font-size: 26px;
+  color: #333;
+  margin-bottom: 30px;
+  text-shadow: 0 1px 2px rgba(255,154,108,0.2);
+}
+.item {
+  background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(6px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255,154,108,0.1);
+}
+.item a {
+  font-size: 18px;
+  color: #222;
+  text-decoration: none;
+  display: block;
+}
+.item p {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #555;
+}
+.item:active {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(255,154,108,0.15);
+}
+/* 手机端适配 */
+@media (max-width: 400px) {
+  .title {
+    font-size: 22px;
+  }
+  .item a {
+    font-size: 16px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1 class="title">自己看看吧</h1>
+  <!-- 精简为6个核心条目，保留高频实用链接 -->
+  <div class="item"><a href="17c.cn" target="_blank">One7艹</a></div>
+  <div class="item"><a href="https://www.aliyundrive.com" target="_blank">阿里云盘</a></div>
+  <div class="item"><a href="/" target="_blank">私人云盘</a><p>服务器自建文件管理</p></div>
+  <div class="item"><a href="#" target="_blank">常用链接</a><p>快速入口集合</p></div>
+  <div class="item"><a href="https://www.feishu.cn" target="_blank">飞书文档</a></div>
+  <div class="item"><a href="https://www.bilibili.com" target="_blank">哔哩哔哩</a></div>
+</div>
+</body>
+</html>
