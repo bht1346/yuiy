@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的网盘导航</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(45deg, #74b6e4, #a8c0e0, #f5c5e1, #e4a7bd);
+  background-size: 400% 400%;
+  animation: bgMove 6s ease infinite;
+}
+
+@keyframes bgMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.title {
+  text-align: center;
+  font-size: 26px;
+  color: #fff;
+  margin-bottom: 30px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.item {
+  background: linear-gradient(90deg, rgba(255,255,255,0.85), rgba(255,255,255,0.7));
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(4px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item a {
+  font-size: 18px;
+  color: #222;
+  text-decoration: none;
+  display: block;
+}
+
+.item p {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #444;
+}
+
+.item:active {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <h1 class="title">我的网盘导航</h1>
+
+  <div class="item">
+    <a href="https://pan.baidu.com" target="_blank">百度网盘</a>
+    
+  </div>
+
+  <div class="item">
+    <a href="https://www.aliyundrive.com" target="_blank">阿里云盘</a>
+    
+  </div>
+
+  <div class="item">
+    <a href="/" target="_blank">私人云盘</a>
+    <p>服务器自建文件管理</p>
+  </div>
+
+  <div class="item">
+    <a href="#" target="_blank">常用链接</a>
+    <p>快速入口集合</p>
+  </div>
+
+  <!-- 下面是我帮你新加的链接 -->
+  <div class="item">
+    <a href="https://www.123pan.com" target="_blank">123网盘</a>
+    
+  </div>
+
+  <div class="item">
+    <a href="https://www.feishu.cn" target="_blank">飞书文档</a>
+   
+  </div>
+
+  <div class="item">
+    <a href="https://www.baidu.com" target="_blank">百度搜索</a>
+    
+  </div>
+
+  <div class="item">
+    <a href="https://github.com" target="_blank">GitHub</a>
+    
+  </div>
+
+  <div class="item">
+    <a href="https://www.bilibili.com" target="_blank">哔哩哔哩</a>
+ 
+  </div>
+<div class="item">
+    <!----#井号改链接--->
+      <a href="#" target="_blank">其他合集</a>
+     <p>备用链接、工具集合</p>
+</div>
+</body>
+</html>
