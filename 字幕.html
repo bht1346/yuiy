@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日文字</title>
+    <title>每日一句</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            /* 青粉柔和渐变背景（你要的青色+粉色） */
             background: linear-gradient(135deg, #a8e6cf, #ffd3e0, #c4f0f7, #ffc2e2);
             background-size: 400% 400%;
             animation: bgGradient 12s ease infinite;
@@ -21,17 +19,12 @@
             align-items: center;
             justify-content: center;
             font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
-            overflow: hidden;
         }
-
-        /* 背景渐变动画 */
         @keyframes bgGradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
-        /* 文字容器：从中心向外展开动画 */
         .text-box {
             max-width: 800px;
             padding: 40px;
@@ -39,69 +32,61 @@
             color: #2c3e50;
             opacity: 0;
             transform: scale(0.6);
-            animation: expandOut 1.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation: expandOut 1.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
         }
-
-        /* 向外展开动画 */
         @keyframes expandOut {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            to { opacity:1; transform:scale(1); }
         }
-
-        /* 主文字（主体） */
         #dailyText {
             font-size: 32px;
             line-height: 1.8;
             font-weight: 400;
             letter-spacing: 2px;
         }
-
-        /* 小字提示 */
         .tip {
-            margin-top: 30px;
-            font-size: 14px;
-            color: #666;
-            opacity: 0.7;
+            margin-top: 25px;
+            font-size:14px;
+            color:#666;
+            opacity:0.7;
         }
     </style>
 </head>
 <body>
     <div class="text-box">
-        <div id="dailyText">加载中...</div>
+        <div id="dailyText">正在加载...</div>
         <div class="tip">每日一句 · 自动更新</div>
     </div>
 
     <script>
-        // 1. 从 GitHub 读取 zimu.txt（替换成你自己的 GitHub 原始链接）
+        // 已填入你的真实链接（预览/线上都能用）
         const txtUrl = "zimu.txt";
 
-        // 2. 获取今天应该显示第几句（每24小时换一句）
-        function getTodayIndex(totalLines) {
-            const now = new Date();
-            const start = new Date("2025-01-01"); // 起始日期
-            const days = Math.floor((now - start) / (1000 * 60 * 60 * 24));
-            return days % totalLines;
-        }
+        async function loadText() {
+            try {
+                let res = await fetch(txtUrl);
+                let text = await res.text();
+                
+                let lines = text
+                    .split(/\r?\n/)
+                    .map(line => line.trim())
+                    .filter(line => line.length > 0);
 
-        // 3. 加载文字
-        fetch(txtUrl)
-            .then(res => res.text())
-            .then(text => {
-                // 按行分割，去掉空行
-                const lines = text.split(/\n/).filter(line => line.trim() !== "");
                 if (lines.length === 0) {
-                    document.getElementById("dailyText").innerText = "暂无内容";
+                    document.getElementById("dailyText").innerText = "文件为空";
                     return;
                 }
-                const index = getTodayIndex(lines.length);
-                document.getElementById("dailyText").innerText = lines[index].trim();
-            })
-            .catch(err => {
-                document.getElementById("dailyText").innerText = "加载失败，请检查网络或 zimu.txt 地址";
-                console.error(err);
-            });
+
+                const start = new Date("2025-01-01");
+                const now = new Date();
+                const days = Math.floor((now - start) / 86400000);
+                const index = days % lines.length;
+
+                document.getElementById("dailyText").innerText = lines[index];
+            } catch (err) {
+                document.getElementById("dailyText").innerText = "加载失败";
+            }
+        }
+        loadText();
     </script>
 </body>
 </html>
