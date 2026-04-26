@@ -39,10 +39,40 @@
         }
         #dailyText {
             font-size: 32px;
-            line-height: 1.8;
+            line-height: 2.2;
             font-weight: 400;
             letter-spacing: 2px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: pre-line;
         }
+        
+        .loader {
+            display: inline-flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #2c3e50;
+            border-radius: 50%;
+            opacity: 0;
+            animation: breathe 1.4s infinite ease-in-out;
+        }
+        .dot:nth-child(1) { animation-delay: 0s; }
+        .dot:nth-child(2) { animation-delay: 0.2s; }
+        .dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(0.6); opacity: 0.4; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
         .tip {
             margin-top: 25px;
             font-size:14px;
@@ -53,19 +83,24 @@
 </head>
 <body>
     <div class="text-box">
-        <div id="dailyText">正在加载...</div>
+        <div id="dailyText">
+            <div class="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
         <div class="tip">每日一句 · 自动更新</div>
     </div>
 
     <script>
-        // 已填入你的真实链接（预览/线上都能用）
         const txtUrl = "zimu.txt";
 
         async function loadText() {
             try {
                 let res = await fetch(txtUrl);
                 let text = await res.text();
-                
+
                 let lines = text
                     .split(/\r?\n/)
                     .map(line => line.trim())
@@ -80,8 +115,12 @@
                 const now = new Date();
                 const days = Math.floor((now - start) / 86400000);
                 const index = days % lines.length;
+                let content = lines[index];
 
-                document.getElementById("dailyText").innerText = lines[index];
+                // 核心：逗号后面自动换行，逗号留在本行
+                content = content.replace(/，/g, "，\n");
+
+                document.getElementById("dailyText").innerText = content;
             } catch (err) {
                 document.getElementById("dailyText").innerText = "加载失败";
             }
