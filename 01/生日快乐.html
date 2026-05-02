@@ -1,1 +1,131 @@
-2
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日一句</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #a8e6cf, #ffd3e0, #c4f0f7, #ffc2e2);
+            background-size: 400% 400%;
+            animation: bgGradient 12s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        @keyframes bgGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .text-box {
+            max-width: 800px;
+            padding: 40px;
+            text-align: center;
+            color: #2c3e50;
+            opacity: 0;
+            transform: scale(0.6);
+            animation: expandOut 1.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
+        }
+        @keyframes expandOut {
+            to { opacity:1; transform:scale(1); }
+        }
+        #dailyText {
+            font-size: 32px;
+            line-height: 2.2;
+            font-weight: 400;
+            letter-spacing: 2px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: pre-line;
+        }
+
+        .loader {
+            display: inline-flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #2c3e50;
+            border-radius: 50%;
+            opacity: 0;
+            animation: breathe 1.4s infinite ease-in-out;
+        }
+        .dot:nth-child(1) { animation-delay: 0s; }
+        .dot:nth-child(2) { animation-delay: 0.2s; }
+        .dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(0.6); opacity: 0.4; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        .tip {
+            margin-top: 25px;
+            font-size:14px;
+            color:#666;
+            opacity:0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-box">
+        <div id="dailyText">
+            <div class="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        <div class="tip">每日一句 · 自动更新</div>
+    </div>
+
+    <script>
+        const txtUrl = "覆盖.txt";
+
+        async function loadText() {
+            try {
+                let res = await fetch(txtUrl);
+                let text = await res.text();
+
+                let lines = text
+                    .split(/\r?\n/)
+                    .map(line => line.trim())
+                    .filter(line => line.length > 0);
+
+                if (lines.length === 0) {
+                    document.getElementById("dailyText").innerText = "文件为空";
+                    return;
+                }
+
+                const start = new Date("2026-01-01");
+                const now = new Date();
+                const days = Math.floor((now - start) / 86400000);
+                const index = days % lines.length;
+                let content = lines[index];
+
+                // 核心：逗号后面自动换行，逗号留在本行
+                content = content.replace(/，/g, "，\n");
+
+                document.getElementById("dailyText").innerText = content;
+            } catch (err) {
+                document.getElementById("dailyText").innerText = "加载失败";
+            }
+        }
+        loadText();
+    </script>
+</body>
+</html>
